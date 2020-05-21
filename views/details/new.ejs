@@ -1,0 +1,205 @@
+<%- include('../partials/header'); -%>
+
+<style>
+      table {
+      border-collapse: collapse;
+      width: 100%;
+      }
+      th, td {
+      text-align: left;
+      padding: 10px;
+      }
+      tr:nth-child(even) {background-color: #e6e6e6;}
+      tr:nth-child(odd) {background-color: #d9d9d9;}
+	
+	 tr:hover {background-color:#cdcdcd;}
+	.hell {
+		background-color:#e6e6e6;
+		padding-left:10px;
+	}
+    </style>
+
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Add New Detail to <%= vehicle.name %></h1>
+        <!-- <div style="width: 30%; margin: 25px auto;"> -->
+            <form action="/vehicles/<%= vehicle._id %>/details" method="POST">
+				<table>
+					<tr>
+					<th>Name of Supplier</th>
+					<th><input class="form-control" type="text" name="detail[text]" placeholder="Name of Supplier"></th>
+					</tr>
+					<tr>
+					<th>Name of Driver</th>
+					<th><input class="form-control" type="text" name="detail[driver]" placeholder="Name of Driver"></th>
+					</tr>
+					<tr>
+					<th>Name of Accountant</th>
+					<th><input class="form-control" type="text" name="detail[account]" placeholder="Name of Accountant"></th>
+					</tr>
+					<tr>
+					<th>Place of Delivery</th>
+						<th><input class="form-control" type="text" name="detail[place]" placeholder="Place Of Delivery"></th>
+					</tr>
+					<tr>
+					<th>Kilometer</th>
+					<th><input class="form-control" type="text" name="detail[km]" placeholder="Total Kilometer"></th>
+					</tr>
+				</table>
+                <div class="hell">
+			 <label>Maal: <input type="text" name="input1" id="input1" onkeyup="calc();" value=""></label> <label><h1>*</h1></label>
+<label><input type="text" name="input2" id="input2" onkeyup="calc();" value=""> </label>
+        
+        Total: <input type="text" name="detail[output3]" id="output3" onkeyup="sum();" > <br><br>
+   
+				
+
+<label>Royalty:<input type="text" name="input4" id="input4" onkeyup="calc();" value=""></label> <label><h1>*</h1></label>
+<label><input type="text" name="input5" id="input5" onkeyup="calc();" value=""> </label>
+
+Total: <input type="text" name="detail[output6]" id="output6" onkeyup="sum();"> <br><br><br>
+
+				</div>
+			
+			<table>
+				<tr>
+				<th>Total Maal and Royalty: </th>
+					<th> <input type="text" name="detail[totalmall]" id="final3" onkeyup="sum();" /><br /> <br></th>
+				</tr>
+      <tr>
+        <th> Field 1:      </th>
+        
+        <th> <input type="text" name="detail[field1]" id="num1" onkeyup="sum();" ><br /><br> </th>
+      </tr> 
+        <tr>
+        <th>Rasta Kharch Khuraki:   </th>
+        
+        <th>  <input type="text" name="detail[rasta]" id="num2" onkeyup="sum();" ><br /><br></th>
+      </tr> 
+      <tr>
+        <th>Zila Panchayat:   </th>
+        <th> <input type="text" name="detail[zila]" id="num3" onkeyup="sum();"><br /><br> </th>
+      </tr>
+      <tr>
+        <th>No Entry:</th>
+        <th><input type="text" name="detail[noentry]" id="num4" onkeyup="sum();"><br /><br></th>
+      </tr>
+      <tr>
+        <th>Air/Filter Greese:</th>
+        <th>  <input type="text" name="detail[air]" id="num5" onkeyup="sum();"><br /><br> </th>
+      </tr>
+      <tr>
+        <th>Kaata Pollution:</th>
+        <th><input type="text" name="detail[kaata]" id="num6" onkeyup="sum();"><br /><br></th>
+      </tr>
+      <tr>
+        <th>Diesel: </th>
+        <th>  <input type="text" name="detail[diesel]" id="num7" onkeyup="sum();"><br /><br> </th>
+      </tr>
+      <tr>
+        <th>Commission:</th>
+        <th> <input type="text" name="detail[commission]" id="num8" onkeyup="sum();"><br /><br></th>
+      </tr>
+      <tr>
+        <th>Field 12:</th>
+        <th><input type="text" id="num9" onkeyup="sum();"> <br /><br></th>
+      </tr>
+      <tr>
+        <th>Total:</th>
+        <th><input type="text" name="detail[tmallroyalty]" id="final" onkeyup="sum();" /></th>
+      </tr>
+      <tr>
+        <th>Rokadi Diesel:</th>
+        <th><input type="text" id="final1" name="detail[rokadi]" onkeyup="sum();" /></th>
+      </tr>
+      </table>
+
+
+			<div class="hell">
+			<label>FitaTon:<input type="text" name="input7" id="input7" onkeyup="calc();" value=""></label> <label><h1>*</h1></label>
+<label><input type="text" name="input8" id="input8" onkeyup="calc();" value=""> </label>
+
+Total: <input type="text" name="detail[output9]" id="output9" onkeyup="sum();"> <br><br><br>
+				
+				</div>
+			<table>
+				<tr>
+				<th>Field 9:</th>
+				<th style="padding-right:50px" > <input type="text" id="num11" onkeyup="sum();"> <br /></th>
+				</tr>
+				<tr>
+				<th>Profit:</th>
+				<th style="padding-right:50px" ><input type="text" name="detail[overall]" id="Last" onkeyup="sum();" /> <br/></th></tr>
+			</table> 
+				<div class="form-group">
+                    <button class="btn btn-lg btn-primary mt-3">Submit!</button>
+                </div>
+		</div>
+	
+
+	<script>
+	window.sum = function sum()
+{
+  var w = document.getElementById('num1').value || 0;
+  var x = document.getElementById('num2').value || 0;
+  var y = document.getElementById('num3').value || 0;
+  var a = document.getElementById('num4').value || 0;
+  var b = document.getElementById('num5').value || 0;
+  var c = document.getElementById('num6').value || 0;
+  var d = document.getElementById('num7').value || 0;
+  var e = document.getElementById('num8').value || 0;
+  var f = document.getElementById('num9').value || 0;
+  
+  var g = document.getElementById('final').value || 0;
+  var h = document.getElementById('output3').value || 0;
+  var i = document.getElementById('output6').value || 0;
+  
+  var j = document.getElementById("output9").value || 0;
+  
+var z2=parseInt(h)+parseInt(i);
+
+  document.getElementById('final3').value=z2;
+ 
+
+  var z=parseInt(w)+parseInt(x)+parseInt(y)+parseInt(a)+parseInt(b)+parseInt(c)+parseInt(d)+parseInt(e)+parseInt(f);
+
+  document.getElementById('final').value=z;
+  
+  
+   var z1=parseInt(g)+parseInt(h)+parseInt(i);
+
+  document.getElementById('final1').value=z1;
+ 
+  var z3=parseInt(j)-parseInt(z1);
+  document.getElementById("Last").value=z3;
+};       
+
+function calc() {
+    var textValue1 = document.getElementById('input1').value;
+    var textValue2 = document.getElementById('input2').value;
+    var textValue3 = document.getElementById('input4').value;
+    var textValue4 = document.getElementById('input5').value;
+    var textValue5 = document.getElementById('input7').value;
+    var textValue6 = document.getElementById('input8').value;
+
+    document.getElementById('output3').value = textValue1*textValue2
+	
+	 document.getElementById('output9').value = textValue5*textValue6
+
+    document.getElementById('output6').value = textValue3*textValue4
+}
+     
+	</script>
+		</div>
+                
+            </form>
+            <a href="/vehicles">Go Back</a>
+        </div>
+    </div>
+		
+	
+
+               
+    </div>
+<%- include('../partials/footer'); -%>

@@ -1,0 +1,121 @@
+<%- include('../partials/header'); -%>
+
+
+<style>
+      table {
+      border-collapse: collapse;
+      width: 100%;
+      }
+	table td {
+  font-size: 18px;
+}
+	 
+      tr:nth-child(even) {background-color: #e6e6e6;}
+      tr:nth-child(odd) {background-color: #d9d9d9;}
+	
+	 tr:hover {background-color:#cdcdcd;}
+	
+	  
+	
+    </style>
+
+<div class="container">
+ 
+                
+              
+                    <h4 class="pull-right"><%= detail.created.toDateString() %></h4>
+	
+					
+					<h1>Full Detail</h1> <br>
+	 <h4>
+		Name Of Supplier:<%= detail.text %>  
+	</h4>
+						
+	 <h4>
+		Place Of Delivery:<%= detail.place %>  
+	</h4> 
+	 <h4>
+		Total KiloMeters:<%= detail.km %>  
+	</h4>
+	 <h4 class="pull-right">
+		Name Of Accountant:<%= detail.account %>  
+	</h4>
+	<h4>
+		Name Of Driver:<%= detail.driver %>
+	</h4>
+    <table class="table table-striped">
+      <tr>
+        <td>TotalMall</td>
+        
+        <td>Rs.<%= detail.output3%></td>
+      </tr>
+      <tr>
+        <td>TotalRoyalty</td>
+       
+        <td>Rs.<%= detail.output6%></td>
+      </tr>
+		<tr>
+		<td>Total Mall And Royalty</td>
+		<td>Rs.<%=detail.totalmall%></td>
+			</tr>
+      <tr>
+        <td>Field1</td>
+       
+        <td>Rs.<%= detail.field1%></td>
+      </tr>
+      <tr>
+        <td>Rasta Kharcha</td>
+        
+        <td>Rs.<%= detail.rasta%></td>
+      </tr>
+		 <tr>
+        <td>Zila Panchayat</td>
+        
+        <td>Rs.<%= detail.zila%></td>
+      </tr>
+		 <tr>
+        <td>No Entry</td>
+        
+        <td>Rs.<%= detail.noentry%></td>
+      </tr>
+		 <tr>
+        <td>Air/Filter Grease</td>
+        
+        <td>Rs.<%= detail.air%></td>
+      </tr>
+		 <tr>
+        <td>Kata Pollution</td>
+        
+        <td>Rs.<%= detail.kaata%></td>
+      </tr>
+		 <tr>
+        <td>Diesel</td>
+        
+        <td>Rs.<%= detail.diesel%></td>
+      </tr>
+		 <tr>
+        <td><strong>Fita Ton</strong></td>
+			  <td>Rs.<%= detail.output9%></td>
+      </tr> 
+	
+		 <tr>
+        <td><strong>Rokadi Diesel</strong></td>
+        
+        <td>Rs.<%= detail.rokadi%></td>
+      </tr>
+	
+		 <tr>
+        <td><strong>Profit</strong></td>
+        
+        <td>Rs.<%= detail.overall%></td>
+      </tr>
+	</table>
+                            
+                            <span class="pull-right"><h4>Submitted By:
+								</h4><strong><%= detail.author.username %></strong></span>
+                            
+	
+            
+      
+
+<%- include('../partials/footer'); -%>

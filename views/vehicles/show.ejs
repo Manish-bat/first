@@ -1,0 +1,73 @@
+<%- include('../partials/header'); -%>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Vehicle</p>
+           
+        </div>
+        <div class="col-md-9">
+            
+                <div class="caption-full">
+                    <h4 class="pull-right"></h4>
+                    <h4><a><%=vehicle.name%></a></h4>
+                      <% if(currentUser && currentUser.isAdmin){ %>
+                        <a class="btn btn-xs btn-warning" href="/vehicles/<%= vehicle._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/vehicles/<%= vehicle._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/vehicles/<%= vehicle._id %>/details/new">Add New Detail</a>
+                </div>
+		</div>
+                <hr>
+                <% vehicle.details.forEach(function(detail){ %>
+                    
+                        <div class="col-md-3 col-sm-6">
+                            
+                            <span class="pull-right"><%= detail.created.toDateString() %></span>
+                            <p>
+                               
+								 <table>
+									  <tr>
+						<td>Fita Ton</td>
+
+						<td>Rs.<%= detail.output9%></td>
+					  </tr>
+													  <tr>
+						<td>Rokad</td>
+
+						<td>Rs.<%= detail.rokadi%></td>
+					  </tr>
+
+						 <tr>
+						<td>Profit</td>
+
+						<td>Rs.<%= detail.overall%></td>
+					  </tr>
+							</table>
+						<a href="/details/<%= detail._id %>" class="btn btn-primary" >More Info</a>
+					 <% if(currentUser && currentUser.isAdmin){ %>
+													<form style="display: inline" class="pull-right"             action="/vehicles/<%=vehicle._id%>/details/<%=detail._id%>?_method=DELETE" method="POST">
+														<button class="btn btn-xs btn-danger">DELETE</button>
+														<a href="/vehicles/<%=vehicle._id%>/details/<%=detail._id%>/edit" class="btn btn-xs btn-info">EDIT</a>
+													</form>
+												<% } %> 							
+
+                            </p>
+                        </div>
+                    
+                <% }) %>
+            </div>
+        </div>
+    
+</div>
+
+
+<%- include('../partials/footer'); -%>
