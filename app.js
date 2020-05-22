@@ -29,8 +29,10 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride('_method'));
 app.use(cookieParser('secret'));
 
+console.log(process.env.DATABASEURL);
  
-mongoose.connect("mongodb://localhost:27017/First_",
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/First_"
+mongoose.connect(url,
 				 {
 useUnifiedTopology: true,
 	useCreateIndex: true,
