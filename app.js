@@ -31,8 +31,8 @@ app.use(cookieParser('secret'));
 
 console.log(process.env.DATABASEURL);
  
-var url = process.env.DATABASEURL || "mongodb://localhost:27017/First_"
-mongoose.connect(url,
+//var url = process.env.DATABASEURL || "mongodb+srv://batman:123@travel-6gjpc.mongodb.net/test?retryWrites=true&w=majority"
+mongoose.connect("mongodb+srv://batman:123@travel-6gjpc.mongodb.net/test?retryWrites=true&w=majority",
 				 {
 useUnifiedTopology: true,
 	useCreateIndex: true,
