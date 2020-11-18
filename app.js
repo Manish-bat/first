@@ -100,5 +100,5 @@ app.use("/vehicles/:id/details", detailRoutes);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
-	console.log("SErver Has Started...")
+	console.log("Server Has Started...")
 })
